@@ -1,0 +1,14 @@
+{
+  "name": "geocoder",
+  "version": "1.0.0",
+  "description": "Simple geocoding service that contains most known cities",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Boro Sitnikovski",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
