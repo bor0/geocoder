@@ -22,7 +22,9 @@ app.get('/', (req, res) => {
 		});
 	}
 
-	const data = dataset.filter((obj) => obj.name && obj.name.toLowerCase().includes(req.query.s.toLowerCase()));
+	const search = req.query.s.toLowerCase();
+	const filtered_data = dataset.filter((obj) => obj.country.toLowerCase().startsWith(search) || obj.city.toLowerCase().startsWith(search));
+	const data = filtered_data.map((obj) => { return { name: obj.city + ', ' + obj.country, lat: obj.lat, lng: obj.lng } });
 
 	res.send({
 		error: false,
