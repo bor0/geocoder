@@ -7,10 +7,10 @@ $data = array();
 
 foreach ( $cities as $city ) {
 	$data[] = array(
-		'city'    => $city['name'],
-		'country' => $countries[ $city['country'] ]['name'],
-		'lat'     => $city['lat'],
-		'lng'     => $city['lng'],
+		$city['name'],
+		$countries[ $city['country'] ]['name'],
+		$city['lat'],
+		$city['lng'],
 	);
 }
 
