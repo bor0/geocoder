@@ -4,8 +4,7 @@ const app = express();
 
 const port = process.env.GEOCODER_PORT || 8082;
 
-let rawdata = fs.readFileSync('dataset.json');
-let dataset = JSON.parse(rawdata);
+let places = JSON.parse(fs.readFileSync('places.json'));
 
 app.get('/', (req, res) => {
 	if (!req.query.s) {
@@ -23,7 +22,7 @@ app.get('/', (req, res) => {
 	}
 
 	const search = req.query.s.toLowerCase();
-	const filtered_data = dataset.filter((obj) => obj[1].toLowerCase().startsWith(search) || obj[0].toLowerCase().startsWith(search));
+	const filtered_data = places.filter((obj) => obj[1].toLowerCase().startsWith(search) || obj[0].toLowerCase().startsWith(search));
 	const data = filtered_data.map((obj) => { return { name: obj[0] + ', ' + obj[1] , lat: obj[2], lng: obj[3] } });
 
 	res.send({

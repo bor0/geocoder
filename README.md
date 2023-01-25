@@ -4,7 +4,7 @@ Geocoder HTTP API
 Installation:
 
 1. Run `npm install` to install the necessary packages
-2. Run `php build-dataset.php` to populate the dataset
+2. Run `php build-places.php` to populate the places
 3. Run `npm run start`
 
 Example:

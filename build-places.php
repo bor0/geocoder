@@ -14,4 +14,4 @@ foreach ( $cities as $city ) {
 	);
 }
 
-file_put_contents( 'dataset.json', json_encode( $data, JSON_UNESCAPED_UNICODE ) );
+file_put_contents( 'places.json', json_encode( $data, JSON_UNESCAPED_UNICODE ) );
