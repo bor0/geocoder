@@ -13,10 +13,7 @@ foreach ( $countries as $country ) {
 	if ( in_array( $continent, array( 'AS', 'OC' ) ) ) {
 		$continent = 'Asia - Pacific';
 	}
-	if ( empty( $data[ $continent ] ) ) {
-		$data[ $continent ] = array();
-	}
-	$data[ $continent ][] = $country['name'];
+	$data[ $country['name'] ] = $continent;
 }
 
 file_put_contents( 'continents.json', json_encode( $data, JSON_UNESCAPED_UNICODE ) );
