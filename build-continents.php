@@ -1,18 +1,24 @@
 <?php
-$countries = json_decode( file_get_contents( 'https://raw.githubusercontent.com/annexare/Countries/master/data/countries.json' ), true );
+$countries = json_decode( file_get_contents( 'https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries.json' ), true );
 
 $data = array();
 foreach ( $countries as $country ) {
-	$continent = $country['continent'];
-	if ( in_array( $continent, array( 'EU', 'AF', 'AN' ) ) ) {
+	$continent = $country['region'];
+
+	if ( empty( $continent ) ) {
+		continue;
+	}
+
+	if ( in_array( $continent, array( 'Europe', 'Africa', 'Polar' ) ) ) {
 		$continent = 'Europe - Africa';
-	}
-	if ( in_array( $continent, array( 'SA', 'NA' ) ) ) {
+	} elseif ( in_array( $continent, array( 'Americas' ) ) ) {
 		$continent = 'Americas';
-	}
-	if ( in_array( $continent, array( 'AS', 'OC' ) ) ) {
+	} elseif ( in_array( $continent, array( 'Asia', 'Oceania' ) ) ) {
 		$continent = 'Asia - Pacific';
+	} else {
+		continue;
 	}
+
 	$data[ $country['name'] ] = $continent;
 }
 
